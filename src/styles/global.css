@@ -3,6 +3,7 @@
   themes: light --default, wireframe, abyss;
 }
 @plugin "@tailwindcss/typography";
+@import "katex/dist/katex.min.css";
 
 ::-webkit-scrollbar {
   display: none;
@@ -25,4 +26,10 @@ html {
 
   /* 可选：添加平滑滚动效果，用户体验更佳 */
   scroll-behavior: smooth;
+}
+
+.markmap {
+  display: block;
+  height: 400px; /* 你可以根据需要设置高度 */
+  width: 100%;
 }

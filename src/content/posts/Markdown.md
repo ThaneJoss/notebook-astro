@@ -1,6 +1,6 @@
 ---
 title: "Markdown文档特性测试"
-description: "Hello World"
+description: "独属于前端的Hello World"
 imageUrl: "/background.jpg"
 authorName: "Joss"
 avatarUrl: "/avatar.png"
@@ -8,123 +8,128 @@ date: "2025-09-12"
 comments: 0
 tag: "note"
 ---
-
-## 1. 标题
-
-# 一级标题 (H1)
-## 二级标题 (H2)
-### 三级标题 (H3)
-#### 四级标题 (H4)
-##### 五级标题 (H5)
-###### 六级标题 (H6)
+<!--
+这是一个 HTML 注释，它不应该在最终渲染的页面中显示。
+如果能看到这句话，说明渲染器没有正确处理 HTML 注释。
+-->
 
 ---
 
-## 2. 文本样式
+## 1. 基础格式化
 
-**这是粗体文本 (Bold)**
+### 1.1 标题 (Headings)
 
-__这也是粗体文本 (Bold)__
+# H1: 一级标题
+## H2: 二级标题
+### H3: 三级标题
+#### H4: 四级标题
+##### H5: 五级标题
+###### H6: 六级标题
 
-*这是斜体文本 (Italic)*
+### 1.2 段落与换行 (Paragraphs & Line Breaks)
 
-_这也是斜体文本 (Italic)_
+这是一个普通的段落。它包含了三行文本，但在渲染时应该合并为一段。
+这是一个普通的段落。它包含了三行文本，但在渲染时应该合并为一段。
+这是一个普通的段落。它包含了三行文本，但在渲染时应该合并为一段。
 
-***这是粗斜体文本 (Bold and Italic)***
+如果需要强制换行，可以在行尾添加两个或更多的空格。  
+就像这样，这里发生了强制换行。
 
-~~这是带删除线的文本 (Strikethrough)~~
+或者，也可以使用 HTML 的 `<br>` 标签。<br>这也是一个强制换行。
 
-这是一个简单的句子，我们在其中插入`行内代码` (inline code)。
+### 1.3 文本样式 (Text Styles)
 
-这是上标：X^2^ (注：部分渲染器支持)
-
-这是下标：H~2~O (注：部分渲染-器支持)
-
-==这是高亮文本== (注：部分渲染器支持)
-
----
-
-## 3. 引用块
-
-> 这是一个单层引用块。
->
-> “Stay hungry, stay foolish.” —— Steve Jobs
-
-> 这是一个嵌套引用块：
-> > 第二层引用。
-> > > 第三层引用。
-
-> 引用块内可以包含其他 Markdown 元素：
->
-> #### 这是一个四级标题
->
-> * 列表项 1
-> * 列表项 2
->
-> ```python
-> print("Hello, Blockquote!")
-> ```
+- **粗体**: `**这是粗体文本**` -> **这是粗体文本**
+- **斜体**: `*这是斜体文本*` -> *这是斜体文本*
+- **粗斜体**: `***这是粗斜体文本***` -> ***这是粗斜体文本***
+- ~~删除线~~: `~~这是删除线文本~~` -> ~~这是删除线文本~~
+- `行内代码`: \` \`这是一个行内代码块\` \` -> `这是一个行内代码块`
+- <u>下划线</u>: `<u>下划线</u>` -> <u>下划线</u> (通常通过 HTML 实现)
+- 高亮: `==这是高亮文本==` -> ==这是高亮文本== (扩展语法)
+- 上标: `X^2^` -> X^2^ (扩展语法)
+- 下标: `H~2~O` -> H~2~O (扩展语法)
 
 ---
 
-## 4. 列表
+## 2. 列表 (Lists)
 
-### 无序列表
+### 2.1 无序列表 (Unordered Lists)
 
-使用 `*`, `-`, 或 `+` 创建无序列表。
+* 项目一 (使用 `*`)
+- 项目二 (使用 `-`)
+  - 嵌套项目 2.1
+    - 嵌套项目 2.1.1
++ 项目三 (使用 `+`)
 
-* 列表项 A
-* 列表项 B
-  * 嵌套列表项 B1
-  * 嵌套列表项 B2
-- 列表项 C
-+ 列表项 D
-
-### 有序列表 (Ordered List)
-
-1. 列表项 1
-2. 列表项 2
-3. 列表项 3
-   1. 嵌套列表项 3.1
-   2. 嵌套列表项 3.2
-
-即使你在源文件中写的数字是乱序的，渲染器通常也会自动修正：
+### 2.2 有序列表 (Ordered Lists)
 
 1. 第一项
-1. 第二项
-1. 第三项
+2. 第二项
+3. 第三项
+   1. 嵌套第一项
+   2. 嵌套第二项
+
+### 2.3 任务列表 (Task Lists)
+
+- [x] 已完成的任务
+- [ ] 未完成的任务
+- [ ] 待办事项
+  - [x] 子任务一（已完成）
+  - [ ] 子任务二（未完成）
 
 ---
 
-## 5. 代码块 (Code Blocks)
+## 3. 引用、链接和图片
 
-### 行内代码 (Inline Code)
+### 3.1 块引用 (Blockquotes)
 
-使用 `backticks` 包裹代码，例如 `const a = 1;`。
+> 这是一个块引用。
+>
+> > 这是一个嵌套的块引用。
+> >
+> > -- 《出处》
 
-### 围栏代码块 (Fenced Code Block)
+### 3.2 链接 (Links)
 
-使用三个反引号 ` ``` ` 来创建代码块，并可以指定语言以获得语法高亮。
+- **行内链接**: [我的博客](https://example.com "这是一个提示标题")
+- **引用链接**: [GitHub][1] 是一个代码托管平台。
+- **自动链接**: <https://www.google.com>
 
-**无指定语言：**
+[1]: https://github.com/ "GitHub 官网"
+
+### 3.3 图片 (Images)
+
+![占位图片](/background.jpg  "这是一个图片标题")
+
+---
+
+## 4. 代码块 (Code Blocks)
+
+### 4.1 普通代码块（无语法高亮）
 
 ```
-docker run -it --rm -p 8080:80 nginx
+这是一个普通的代码块，
+通常用于显示不希望被格式化的纯文本。
+  保留了      空格和缩进。
 ```
 
-**指定语言 (JavaScript):**
+### 4.2 语法高亮代码块
 
+测试不同语言的语法高亮。
+
+**JavaScript:**
 ```javascript
 function greet(name) {
+  // 这是一个单行注释
   console.log(`Hello, ${name}!`);
 }
 
 greet('World');
 ```
 
-**指定语言 (Python):**
-
+**Python:**
 ```python
+# 这是一个 Python 示例
 def fibonacci(n):
     a, b = 0, 1
     while a < n:
@@ -135,11 +140,31 @@ def fibonacci(n):
 fibonacci(100)
 ```
 
+**CSS:**
+```css
+/* CSS 代码高亮测试 */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+}
+```
+
 ---
 
-## 6. 分隔线 (Horizontal Rules)
+## 5. 表格 (Tables)
 
-使用三个或更多的 `---`, `***`, 或 `___` 来创建分隔线。
+| 左对齐 | 居中对齐 | 右对齐 |
+| :--- | :---: | ---: |
+| 内容 A1 | 内容 B1 | 内容 C1 |
+| 内容 A2 | 内容 B2 | 内容 C2 |
+| `code` | **bold** | *italic* |
+
+---
+
+## 6. 水平分割线 (Horizontal Rules)
+
+可以通过三种方式创建水平分割线：
 
 ---
 
@@ -149,98 +174,125 @@ ___
 
 ---
 
-## 7. 链接 (Links)
+## 7. 高级与扩展特性
 
-### 标准链接
+这部分特性可能需要特定的插件或库（如 KaTeX, Mermaid.js 等）支持。
 
-[访问 Google](https://www.google.com "Google 搜索引擎")
+### 7.1 脚注 (Footnotes)
 
-### 引用式链接
-
-这是一个 [引用式链接][ref1]。你可以在文档的任何地方定义这个引用。
-这是另一个 [引用][ref2]。
-
-[ref1]: https://github.com/
-[ref2]: https://www.mozilla.org "Mozilla 官网"
-
-### 自动链接
-
-大多数渲染器会自动将 URL 转换为链接：https://www.example.com
-或者用尖括号包裹：<https://www.example.com>
-
----
-
-## 8. 图片 (Images)
-
-图片的语法与链接类似，只是在前面加一个感叹号 `!`。
-
-`![Alt text](URL "Optional title")`
-
-![GitHub Octocat](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png "GitHub吉祥物")
-
-### 带链接的图片
-
-[![可点击的图片](https://via.placeholder.com/150/0000FF/FFFFFF?text=Click+Me)](https://www.example.com)
-
----
-
-## 9. 表格 (Tables)
-
-这是 GitHub Flavored Markdown (GFM) 的扩展功能，但被广泛支持。
-
-| 左对齐 | 居中对齐 | 右对齐 |
-| :--- | :----: | ---: |
-| 单元格 1 | 单元格 2 | 单元格 3 |
-| 这是一个比较长的单元格 |  中等长度  | 短   |
-| `code` | **bold** | *italic* |
-
----
-
-## 10. 任务列表 (Task Lists)
-
-这是 GFM 的另一个扩展功能。
-
-- [x] 已完成的任务
-- [ ] 未完成的任务
-  - [ ] 嵌套的未完成任务
-  - [x] 嵌套的已完成任务
-- [ ] 待办事项
-
----
-
-## 11. 脚注 (Footnotes)
-
-这是一个脚注的例子[^1]。你可以在文档的末尾找到它的定义。
-
-这是另一个脚注[^bignote]。
+这是一个包含脚注的句子[^1]。这是另一个脚注[^another]。
 
 [^1]: 这是第一个脚注的详细内容。
-[^bignote]: 这是一个内容更长、更详细的脚注。它也可以包含多段文字。
+[^another]: 这是另一个脚注的详细内容，可以包含[链接](https://example.com)。
 
----
+### 7.2 数学公式 (Math Formulas - LaTeX)
 
-## 12. HTML 标签 (HTML Tags)
+**行内公式**: 质能方程 $E=mc^2$ 是物理学中最著名的公式之一。
 
-Markdown 支持直接嵌入 HTML 标签，这提供了极大的灵活性。
+**块级公式**:
+$$
+\int_a^b f(x)dx = F(b) - F(a)
+$$
 
-<dl>
-  <dt>定义列表</dt>
-  <dd>是一种用于呈现术语和其对应定义的方式。</dd>
-</dl>
+### 7.3 HTML 原生支持
 
-使用 `<kbd>` 标签来表示键盘输入：<kbd>Ctrl</kbd>+<kbd>C</kbd>
+你可以在 Markdown 中嵌入原生 HTML 标签。
 
-这是一个可以折叠的区域：
 <details>
-  <summary>点击展开详情</summary>
-  <p>这里是隐藏的详细内容，只有在点击后才会显示出来。</p>
+  <summary>点击展开查看详情</summary>
+  <p>这里是隐藏的详细内容。可以包含其他 Markdown 格式，例如 **粗体** 和 `代码`。</p>
 </details>
 
+<div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+  这是一个使用原生 HTML 和 CSS 创建的带样式的 DIV 容器。
+</div>
+
+### 7.4 警告/提示框 (Admonitions)
+
+> [!NOTE]
+> **提示**: 这是一个提示框，用于引起用户的注意。
+
+> [!TIP]
+> **技巧**: 这是一个技巧框，提供有用的建议。
+
+> [!WARNING]
+> **警告**: 这是一个警告框，需要用户特别注意。
+
+> [!DANGER]
+> **危险**: 这是一个危险框，表示操作可能带来严重后果。
+
+### 7.5 图表与思维导图 (Diagrams - Mermaid)
+
+**如果您的博客支持 Mermaid.js，下面的代码块应该被渲染成图表。**
+
+#### 7.5.1 流程图 (Flowchart)
+
+```mermaid
+graph TD;
+    A[开始] --> B{条件判断};
+    B -->|是| C[操作一];
+    B -->|否| D[操作二];
+    C --> E[结束];
+    D --> E;
+```
+
+#### 7.5.2 序列图 (Sequence Diagram)
+
+```mermaid
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts<br/>prevail...
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+```
+
+#### 7.5.3 甘特图 (Gantt Chart)
+
+```mermaid
+gantt
+    title 项目开发甘特图
+    dateFormat  YYYY-MM-DD
+    section 设计阶段
+    需求分析           :done,    des1, 2023-01-01, 3d
+    原型设计           :active,  des2, after des1, 5d
+    section 开发阶段
+    后端开发           :         dev1, after des2, 10d
+    前端开发           :         dev2, after des2, 10d
+    section 测试阶段
+    功能测试           :         test1, after dev1, 5d
+```
+
+#### 7.5.4 思维导图 (Mind Map)
+
+```mermaid
+mindmap
+  root((博客功能测试))
+    :基础语法:
+      ::标题
+      ::文本样式
+      ::列表
+    :核心功能:
+      ::代码块
+      ::表格
+      ::链接与图片
+    :高级扩展:
+      ::数学公式
+      ::图表
+        :::流程图
+        :::序列图
+        :::思维导图
+      ::HTML嵌入
+```
+
 ---
 
-## 13. Emoji (表情符号)
+## 8. 总结
 
-:smile: :tada: :rocket:
+如果以上所有内容都能正确、美观地显示，那么恭喜你，你的博客 Markdown 渲染引擎非常强大！
 
-
-### 测试结束

@@ -8,6 +8,7 @@ interface Props {
 
 let { headings,title: title } = Astro.props;
 
+headings=headings.filter(heading=>heading.depth<=3);
 
 ---
 
