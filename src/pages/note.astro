@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+
+const allNotes = await getCollection("posts", ({ data }) => {
+  return data.tag === 'note';
+});
+---
+<BaseLayout title="随笔" description="记录一些日常的思考和笔记。">
+  <div class="space-y-8">
+    {allNotes.map(post => (
+      <ArticleCard
+        title={post.data.title}
+        description={post.data.description}
+        date={post.data.date.toLocaleDateString('zh-CN')}
+        url={`/posts/${post.slug}`}
+        imageUrl={post.data.imageUrl}
+        authorName={post.data.authorName}
+        avatarUrl={post.data.avatarUrl}
+        comments={post.data.comments}
+        tag={post.data.tag}
+      />
+    ))}
+  </div>
+</BaseLayout>

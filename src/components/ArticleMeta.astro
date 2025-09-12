@@ -1,0 +1,22 @@
+---
+// src/components/ArticleMeta.astro
+interface Props {
+  authorName: string;
+  date: string; // <-- 保持 string 类型，因为它接收的是格式化后的日期
+  avatarUrl: string;
+}
+
+const { authorName, date, avatarUrl } = Astro.props;
+---
+ 
+<div class="flex items-center">
+  <div class="avatar mr-3">
+    <div class="w-10 rounded-full">
+      <img src={avatarUrl} alt={authorName } />
+    </div>
+  </div>
+  <div>
+    <p class="font-semibold text-base-content">{authorName }</p>
+    <p class="text-sm text-base-content/60">{date}</p>
+  </div>
+</div>

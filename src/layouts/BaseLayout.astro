@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" href="/favicon.png" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <ClientRouter />
+    </head>
+    <body class="antialiased selection:bg-primary selection:text-primary-content font-sans bg-base-200">
+        <header class="sticky top-0 z-50 w-full bg-base-100/80 backdrop-blur-sm border-b border-base-300/50">
+            <div class="w-full max-w-7xl mx-auto px-4">
+                <div class="navbar bg-transparent">
+                 <div class="navbar-start">
+                        <a href="/" class="btn btn-ghost normal-case text-2xl">
+                            <span
+                                class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+                            >
+                                JOSS
+                            </span>
+                        </a>
+                    </div>
+                    <div class="navbar-end">
+                        <ul class="menu menu-horizontal px-1 space-x-2">
+                            <li>
+                                <a
+                                    href="/"
+                                    class="btn btn-ghost normal-case hover:text-primary"
+                                    >首页</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/note"
+                                    class="btn btn-ghost normal-case hover:text-primary"
+                                    >随笔</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/dive"
+                                    class="btn btn-ghost normal-case hover:text-primary"
+                                    >探索</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/about"
+                                    class="btn btn-ghost normal-case hover:text-primary"
+                                    >关于</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="w-full max-w-5xl mx-auto px-4 py-12 min-h-screen">
+            <slot />
+        </main>
+    </body>
+</html>

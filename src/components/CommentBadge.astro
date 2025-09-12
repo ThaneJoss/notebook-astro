@@ -1,0 +1,21 @@
+---
+// src/components/CommentBadge.astro
+import CommentIcon from "./CommentIcon.astro";
+
+interface Props {
+  count: number;
+}
+
+const { count } = Astro.props;
+let countMessage;
+if (count > 99) {
+  countMessage = "99+";
+} else {
+  countMessage = count;
+}
+---
+
+<div class="badge badge-outline gap-2 p-3 text-base-content/80">
+  <CommentIcon />
+  <span class="font-medium"> {countMessage} </span>
+</div>

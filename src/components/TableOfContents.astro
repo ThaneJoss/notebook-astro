@@ -1,0 +1,40 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+  title: string;
+}
+
+let { headings,title: title } = Astro.props;
+
+
+---
+
+<aside class="toc-wrapper hidden lg:block">
+  <nav class="sticky top-24" aria-labelledby="toc-heading">
+    <ul
+      id="toc-menu"
+      class="menu rounded-box border border-base-300 bg-base-200/80 p-4 backdrop-blur overflow-y-auto"
+    >
+      <li>
+        <h2 class="menu-title text-base" id="toc-heading">
+          {title}
+        </h2>
+      </li>
+
+      {
+        headings.map((heading) => (
+          <li>
+            <a
+              class:list={[{ "pl-8": heading.depth === 3 }]}
+              href={`#${heading.slug}`}
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>

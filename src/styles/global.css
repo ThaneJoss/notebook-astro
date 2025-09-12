@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, wireframe, abyss;
+}
+@plugin "@tailwindcss/typography";
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 针对 Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* 针对 IE (较旧) */
+body {
+  -ms-overflow-style: none;
+}
+
+html {
+  /* 为页面滚动设置顶部内边距，防止内容被固定导航栏遮挡 */
+  /* 请将 6rem 替换为你的导航栏的实际高度 + 一些额外的间距 */
+  scroll-padding-top: 6rem; /* 例如 96px */
+
+  /* 可选：添加平滑滚动效果，用户体验更佳 */
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,35 @@
+---
+// src/pages/index.astro
+
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+
+const title = "Joss";
+const description = "这里是关于编程、技术和生活思考的数字花园。";
+
+const allPosts = await getCollection("posts");
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout {title} {description}>
+  <div class="space-y-8">
+    {
+      sortedPosts.map((post) => (
+        <ArticleCard
+          title={post.data.title}
+          description={post.data.description}
+          imageUrl={post.data.imageUrl}
+          authorName={post.data.authorName}
+          avatarUrl={post.data.avatarUrl}
+          date={post.data.date.toLocaleDateString("zh-CN")}
+          comments={post.data.comments}
+          url={`/posts/${post.slug}/`}
+          tag={post.data.tag}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>
