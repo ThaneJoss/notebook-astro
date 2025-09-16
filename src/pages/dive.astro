@@ -3,9 +3,13 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 
-const allDives = await getCollection("posts", ({ data }) => {
+let allDives = await getCollection("posts", ({ data }) => {
   return data.tag === 'dive';
 });
+
+allDives= allDives.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 <BaseLayout title="探索" description="深入探索具体的技术和话题。">
   <div class="space-y-8">

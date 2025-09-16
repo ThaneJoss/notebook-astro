@@ -3,9 +3,13 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 
-const allNotes = await getCollection("posts", ({ data }) => {
+let allNotes = await getCollection("posts", ({ data }) => {
   return data.tag === 'note';
 });
+
+allNotes= allNotes.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 <BaseLayout title="随笔" description="记录一些日常的思考和笔记。">
   <div class="space-y-8">
