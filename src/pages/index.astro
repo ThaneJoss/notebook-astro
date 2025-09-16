@@ -9,9 +9,12 @@ const title = "Joss";
 const description = "这里是关于编程、技术和生活思考的数字花园。";
 
 const allPosts = await getCollection("posts");
-const sortedPosts = allPosts.sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const sortedPosts = allPosts.sort((a, b) => {
+  const aDive = a.data.tag === "dive";
+  const bDive = b.data.tag === "dive";
+  if (aDive !== bDive) return aDive ? -1 : 1;
+  return b.data.date.valueOf() - a.data.date.valueOf();
+});
 ---
 
 <BaseLayout {title} {description}>
